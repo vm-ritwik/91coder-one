@@ -38,6 +38,19 @@ app.use(cookieParser());
 app.use(express.static('client'))
 app.use(bodyParser());
 
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials,responseType');
+    res.header('Access-Control-Allow-Credentials', true);
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
+
 app.use(function (req, res, next) {
     console.log(`${req.originalUrl}`);
     return next();
@@ -98,11 +111,34 @@ app.post(`/api/problems/create`, function (req, res) {
     })
 });
 
+app.get(`/api/problems/:id`, function (req, res) {
+    checkUserValidation(req.query.id, function (err, ok) {
+        if (ok) {
+            Problem.findOne({
+                id: req.params.id
+            }, {}, function (err, problem) {
+                if (err) {
+                    return res.status(500).json(err)
+                } else {
+                    return res.json({
+                        message: "Problem Get",
+                        problem: problem
+                    })
+                }
+            })
+        } else {
+            return res.status(401).json({
+                message: err
+            })
+        }
+    })
+});
+
 app.post(`/api/problems/id/:problemId/update`, function (req, res) {
     checkUserValidation(req.query.id, function (err, ok) {
         if (ok) {
             let query = {}; // Explain in the next class , +,-,/,*
-            query.id = { $eq : req.params.problemId };
+            query.id = {$eq: req.params.problemId};
             let update = req.body.problem;
             Problem.findOneAndUpdate(query, update, function (err, saved) {
                 if (err) {
@@ -126,8 +162,8 @@ app.post(`/api/problems/id/:problemId/remove`, function (req, res) {
     checkUserValidation(req.query.id, function (err, ok) {
         if (ok) {
             let query = {}; // Explain in the next class , +,-,/,*
-            query.id = { $eq : req.params.problemId };
-            Problem.findOneAndDelete(query,function (err, saved) {
+            query.id = {$eq: req.params.problemId};
+            Problem.findOneAndDelete(query, function (err, saved) {
                 if (err) {
                     return res.status(500).json(err)
                 } else {

@@ -1,31 +1,28 @@
 import {useEffect, useState} from "react";
-import callAPI from "./util/apiCaller";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
+import Home from "./modules/home/home";
+import ProblemPage from "./modules/problems/problemPage";
 
 function App() {
 
-    const [problemList, setProblemList] = useState([{
-        id: 1,
-        title: 'Soemthing'
-    }])
-
 
     useEffect(() => {
-        callAPI(`/api/problems/list?id=1`, 'get', null, (resp) => {
-            console.log("resp", result);
-        })
     }, []);
 
     return (
         <div>
-            <h1>Problem List 2</h1>
-            <ul>
-                {problemList.map(item => (
-                    <li key={item.id}>
-                        <h3>{item.id}</h3>
-                        <h4>{item.title}</h4>
-                    </li>
-                ))}
-            </ul>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path={"/problem/:problemId"} component={ProblemPage}/>
+                </Switch>
+            </Router>
         </div>
     );
 }
