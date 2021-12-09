@@ -1,0 +1,54 @@
+1. Accepting Information
+2. Manipulation of Data ->
+    a. writing/storing of data
+    b. calculations
+    c. search of data for certain aspects
+3. Input of Data -> streaming -> user via socket/real time connection
+
+Express Server -> Minimalistic
+    1. Path/Variables -> Input Path -> Payload Contract (Express Framework -> req)
+    2. Information can you accept -> xml, stream, octet/stream, json, format of input data
+    3. Authenticity of Input/User inputting -> login based mechanism, access token, CORS (origin or domain), ip whitelisting/blacklisting -> included
+    4. Validating of Inputs -> variables what we want and not obscure, sql injections -> no validations ?? -> model layer validation
+    5. Storage/Transformation/Calculations of the input data -> 80% -> store
+    6. Output -> format of the output -> (Express Framework) -> res -> output
+
+Middleware -> Middle software () -> DRY
+
+CP - 1
+Business Logic ->
+   1980s-1990s -> Slotting Cards, Paper Prints, Screens -> Console
+               -> Memory Cards -> RAM
+               inputa.txt
+               inputb.txt
+               read on inputa + read on inputb -> RAM -> [], [] -> [] -> output.txt
+               Mathematics, Relationships
+   1990s+ -> Magnetic Tapes (binary data), CD ROMs (binary data)
+        -> Database System -> Set of APIs (System) -> FileSystem -> Oracle DB
+        -> SQL -> (Rows and Columns) -> storage -> Disk ??
+        -> Library System -> Books -> Tables -> s.no. author_name, book_name, bought_at_date,
+   1990s to 2010s ->
+    Key Value Database -> Redis, Memcache
+    Graph Databases -> neo4J
+    Document Databases -> MongoDB 4.4
+    Columnar Databases -> Cassandra (Instagram Feed)
+    Timescale Databases -> influxDB
+    BigData -> Hadoop -> HDFS, RedShift,
+    SQL -> MySQl, Postgres
+
+    infinite loops -> heats up CPUs -> burns
+
+    API Server (down) + DB Server (down)
+
+    Databases (Servers)->
+        1. Data protection
+        2. Structure
+        3. Locking of Read/Writes
+        4. Replication of Databases/ Clusters
+        5. Sharding of Data
+        6. Network downtimes
+        7. Caching
+        8. *Good set of math operations * n = 1M
+        9. *Good set of set operations
+
+    CRUD -> Create Read Update Delete transaction/operation

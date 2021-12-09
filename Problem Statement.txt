@@ -1,0 +1,82 @@
+// Question Bank System for any new user
+
+problem/question/statement
+
+data ?
+
+id
+title
+solved_by_count
+description
+answer
+created_at
+updated_at
+
+Set of Operations
+
+1. Add New problem statements -> CREATE -> Check
+2. Update problem statements -> Update ->
+    a. atomic update -> one document at a time -> identify the document
+3. Delete problem statements -> Delete
+4. List all the problem statements -> Read
+
+5. APIs -> List API -> list of problem -> show it in UI
+
+Benefits of React ->
+
+1. Component Based -> Reusable Component
+2. React native to JS -> state -> ability to manipulate faster
+3. Diffing of DOM -> ;
+
+Database -> MongoDB
+
+
+
+1. Dont' Repeat Yourself
+2. Encapsulation of you code
+
+
+JS Functions
+
+Sync
+Async
+
+// definition of the method/function
+function read(a) {
+    console.log(a);
+}
+// class read(a) {  }
+
+// delay -> networking, filesystem, internal calculation
+function asyncRead(a, cb) {
+    setTimeout(function(){
+    console.log(a);
+    cb();
+    }, 5000);
+}
+
+calling of function (execution of the function);
+
+
+Scenario 1
+asyncRead("Print this line"); // execute ->  function { asyncRead("Print this line"); // execute -> finish ? }
+read("Print this next line"); //
+read("Print this next line"); //
+read("Print this next line"); //
+Output1 ->
+
+
+Scenario 2
+read("Print this line"); // 5000ms
+asyncRead("Print this next line");
+
+
+Output2 ->
+
+JS -> OOPL
+
+JS Developers ->
+1. Callbacks ->
+
+2. Promises ->
+3. Async Await ->

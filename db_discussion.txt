@@ -1,0 +1,11 @@
+DB Operations ->
+
+findOneAndUpdate -> query , update -> { $set : {} }
+
+query -> match operation
+
+faster -> db.collection('Problem').update({}, { $set : {  } }); -> Update -> no ack -> updated back
+
+slow -> updateObjectById () -> findOne() 1 network -> save(); 1 network -> ack -> update objected
+
+API Server <-> DB Server
